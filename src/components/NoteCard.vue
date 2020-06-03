@@ -1,8 +1,8 @@
 <template>
   <div class="note">
-    <h1>{{  note.title }}</h1>
+    <h1>{{ note.title }}</h1>
     <ul>
-      <li :class="todo.completed?'completed':''" v-for="todo in note.todos" :key="todo">
+      <li :class="todo.completed?'completed':''" v-for="todo in note.todos" :key="todo.id">
         {{ todo.text }}
       </li>
     </ul>
