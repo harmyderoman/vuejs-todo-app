@@ -1,20 +1,22 @@
 let notes = [
   {
+		noteId: 1,
     title: "First note",
     todos: [
-      { todo: "1 task" },
-      { todo: "2 task" },
-      { todo: "3 task" },
-      { todo: "4 task" },
+      { text: "1 task", completed: false },
+      { text: "2 task", completed: true },
+      { text: "3 task", completed: true },
+      { text: "4 task", completed: false },
     ],
   },
   {
+		noteId: 2,
     title: "Second note",
     todos: [
-      { todo: "1 task" },
-      { todo: "2 task" },
-      { todo: "3 task" },
-      { todo: "4 task" },
+      { text: "1 task", completed: true },
+      { text: "2 task", completed: false },
+      { text: "3 task", completed: false },
+      { text: "4 task", completed: false },
     ],
   },
 ];

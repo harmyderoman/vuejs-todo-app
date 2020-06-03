@@ -2,12 +2,12 @@
   <div class="note">
     <h1>{{  note.title }}</h1>
     <ul>
-      <li v-for="todo in note.todos" :key="todo">
-        {{ todo.todo }}
+      <li :class="todo.completed?'completed':''" v-for="todo in note.todos" :key="todo">
+        {{ todo.text }}
       </li>
     </ul>
     <div class="note--actions">
-      <button to="/note">Go to Note</button>
+      <button to="/note">Edit Note</button>
       <button>Delete</button>
     </div>
   </div>
@@ -23,5 +23,7 @@ export default {
 </script>
 
 <style>
-
+.completed{
+  text-decoration: line-through;
+}
 </style>

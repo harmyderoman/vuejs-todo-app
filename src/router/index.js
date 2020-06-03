@@ -15,6 +15,11 @@ Vue.use(VueRouter)
     path: '/note',
     name: 'Note',
     component: Note
+  },
+  {
+    path: '/note/:noteId',
+    name: 'Edit',
+    component: Note
   }
 ]
 
