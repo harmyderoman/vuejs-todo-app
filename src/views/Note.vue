@@ -37,6 +37,7 @@ export default {
   },
   data() {
     return {
+      historyNote: [],
       noteId: this.$route.params.noteId,
       note: {
         noteId: notes.length,
@@ -80,6 +81,16 @@ export default {
       this.$router.push('/')
     }
   },
+  watch: {
+    note: {
+      handler: function (val) {
+        this.historyNote.push(JSON.parse(JSON.stringify(val)))
+        console.log("Watch get:")
+        console.log(JSON.stringify(this.historyNote))
+       },
+      deep: true,
+    }
+  }
 };
 </script>
 
