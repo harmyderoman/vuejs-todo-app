@@ -20,7 +20,7 @@
     <hr />
     <div>
       <button @click="saveNote">Save</button>
-      <button>Cancel</button>
+      <button @click="cancelEdit">Cancel</button>
       <button>Delete</button>
     </div>
   </div>
@@ -69,6 +69,9 @@ export default {
       } else{
         notes.push(this.note)
       }
+    },
+    cancelEdit(){
+      this.$router.push('/')
     }
   },
 };
