@@ -42,7 +42,7 @@ export default {
       watching: true,
       noteId: this.$route.params.noteId,
       note: {
-        noteId: notes.length,
+        noteId: notes.length+1,
         title: "",
         todos: [],
       },
