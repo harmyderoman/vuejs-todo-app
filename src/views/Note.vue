@@ -10,17 +10,16 @@
     </div>
     <ul>
         <todo-item
-          v-for="todo in note.todos"
+          v-for="(todo, index) in note.todos"
           :todo="todo"
-          :key="todo.id"
-          :todoId="todo.id"
+          :key="index"
           @remove-todo="onRemoveTodo"
         />
     </ul>
     <button @click="addTodo">Add Todo</button>
     <hr />
     <div>
-      <button>Save</button>
+      <button @click="saveNote">Save</button>
       <button>Cancel</button>
       <button>Delete</button>
     </div>
@@ -48,7 +47,7 @@ export default {
   },
   mounted() {
     if (this.noteId) {
-      this.note = notes.find((note) => note.noteId == this.noteId);
+      this.note = JSON.parse(JSON.stringify(notes.find((note) => note.noteId == this.noteId)))
     }
   },
   methods: {
@@ -62,6 +61,15 @@ export default {
       let i = this.note.todos.indexOf(todo)
       this.note.todos.splice(i, 1);
     },
+    saveNote(){
+      if(this.noteId){
+        let index = notes.findIndex(note => note.noteId == this.noteId )
+        notes[index] = this.note
+        console.log(notes[index])
+      } else{
+        notes.push(this.note)
+      }
+    }
   },
 };
 </script>

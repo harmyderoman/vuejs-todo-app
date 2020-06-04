@@ -13,7 +13,6 @@ export default {
   name: "TodoItem",
   props: {
     todo: Object,
-    todoId: Number
   },
   data(){
     return {
@@ -21,7 +20,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.todoId)
   }
 };
 </script>
