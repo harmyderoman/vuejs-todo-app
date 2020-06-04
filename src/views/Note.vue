@@ -5,8 +5,8 @@
     <input v-model="note.title" type="text" placeholder="Enter new title..." />
     <hr />
     <div>
-      <button @click="undo">Undo</button>
-      <button @click="redo">Redo</button>
+      <button @click="undo" :disabled="!(this.histotyIndex > 0)">Undo</button>
+      <button @click="redo" :disabled="!(this.histotyIndex < (this.noteHistory.length - 1))">Redo</button>
     </div>
     <ul>
       <todo-item
@@ -54,8 +54,6 @@ export default {
         JSON.stringify(notes.find((note) => note.noteId == this.noteId))
       );
     }
-    // var unwatch = this.watchNote
-    // unwatch()
   },
   methods: {
     addTodo() {
@@ -88,8 +86,6 @@ export default {
     },
     undo() {
       this.watching = false;
-      // let histotyLastIndex = this.noteHistory.length - 1
-      
       if (this.histotyIndex > 0) {
         this.histotyIndex -= 1;
         this.note = this.noteHistory[this.histotyIndex];
@@ -97,8 +93,6 @@ export default {
     },
     redo() {
       this.watching = false;
-      // let histotyLastIndex = this.noteHistory.length - 1
-      
       if (this.histotyIndex < (this.noteHistory.length - 1)) {
         this.histotyIndex += 1;
         this.note = this.noteHistory[this.histotyIndex];
@@ -110,10 +104,10 @@ export default {
       handler: function(val) {
         if (this.watching) {
           this.noteHistory.push(JSON.parse(JSON.stringify(val)));
-          console.log("Watch get:");
-          console.log(JSON.stringify(this.noteHistory));
+          // console.log("Watch get:");
+          // console.log(JSON.stringify(this.noteHistory));
           this.histotyIndex = this.noteHistory.length - 1;
-          console.log("histotyIndex: " + this.histotyIndex);
+          // console.log("histotyIndex: " + this.histotyIndex);
         } else {
           this.watching = true;
         }
