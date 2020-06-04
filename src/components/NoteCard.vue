@@ -6,7 +6,7 @@
         {{ todo.text }}
       </li>
     </ul>
-    <div class="note--actions">
+    <div class="note_actions">
       <button @click="goToNote">Edit Note</button>
       <button @click="$emit('delete-note', note.noteId)">Delete</button>
     </div>
