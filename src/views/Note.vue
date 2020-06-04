@@ -11,13 +11,9 @@
     <ul>
       <li>
         <todo-item v-for="todo in note.todos" :todo="todo"  :key="todo.id"/>
-        <!-- <input type="checkbox" />
-        <span>todo</span>
-        <button>Edit Todo</button>
-        <button>Delete Todo</button> -->
       </li>
     </ul>
-    <button>Add Todo</button>
+    <button @click="addTodo">Add Todo</button>
     <hr />
     <div>
       <button>Save</button>
@@ -51,6 +47,13 @@ export default {
         this.note = notes.find(note => note.noteId == this.noteId)
       }
     
+  },
+  methods: {
+    addTodo(){
+      this.note.todos.push({
+        text: "New Todo", completed: false 
+      })
+    }
   }
 };
 </script>

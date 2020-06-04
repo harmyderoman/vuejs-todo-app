@@ -7,7 +7,7 @@
       </li>
     </ul>
     <div class="note--actions">
-      <button to="/note">Edit Note</button>
+      <button @click="goToNote">Edit Note</button>
       <button>Delete</button>
     </div>
   </div>
@@ -17,6 +17,11 @@
 export default {
   props: {
     note: Object
+  },
+  methods: {
+    goToNote(){
+      this.$router.push(`/note/${this.note.noteId}`)
+    }
   }
 
 }

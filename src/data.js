@@ -16,7 +16,7 @@ let notes = [
       { text: "1 task", completed: true },
       { text: "2 task", completed: false },
       { text: "3 task", completed: false },
-      { text: "4 task", completed: false },
+      { text: "4 task", completed: true },
     ],
   },
 ];
