@@ -27,8 +27,9 @@
 </template>
 
 <script>
-import notes from "../data";
 import TodoItem from "../components/TodoItem";
+import { NoteService } from '../services/NoteService'
+import { random } from '../utils'
 
 export default {
   name: "Note",
@@ -42,7 +43,7 @@ export default {
       watching: true,
       noteId: this.$route.params.noteId,
       note: {
-        noteId: notes.length+1,
+        noteId: "",
         title: "",
         todos: [],
       },
@@ -50,9 +51,9 @@ export default {
   },
   mounted() {
     if (this.noteId) {
-      this.note = JSON.parse(
-        JSON.stringify(notes.find((note) => note.noteId == this.noteId))
-      );
+      this.note = NoteService.getItemById(this.noteId)
+    } else {
+      this.note.noteId = random()
     }
   },
   methods: {
@@ -67,22 +68,24 @@ export default {
       this.note.todos.splice(i, 1);
     },
     saveNote() {
-      if (this.noteId) {
-        let index = notes.findIndex((note) => note.noteId == this.noteId);
-        notes[index] = this.note;
-      } else {
-        notes.push(this.note);
-      }
-      this.$router.push("/");
+      NoteService.updateItem(this.note.noteId, this.note)
     },
     cancelEdit() {
+      this.clearNote()
       this.$router.push("/");
     },
     deleteNote() {
-      let index = notes.findIndex((note) => note.noteId == this.note.noteId);
-
-      notes.splice(index, 1);
+      NoteService.removeItem(this.noteId)
+      this.clearNote()
       this.$router.push("/");
+
+    },
+    clearNote(){
+      this.note = {
+        noteId: "",
+        title: "",
+        todos: [],
+      }
     },
     undo() {
       this.watching = false;
@@ -104,10 +107,7 @@ export default {
       handler: function(val) {
         if (this.watching) {
           this.noteHistory.push(JSON.parse(JSON.stringify(val)));
-          // console.log("Watch get:");
-          // console.log(JSON.stringify(this.noteHistory));
           this.histotyIndex = this.noteHistory.length - 1;
-          // console.log("histotyIndex: " + this.histotyIndex);
         } else {
           this.watching = true;
         }

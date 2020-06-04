@@ -9,30 +9,40 @@
         @delete-note="onDeleteNote"
       />
     </div>
+    <hr />
+    <button @click="clearAll">Clear Data</button>
   </div>
 </template>
 
 <script>
-import notes from "../data";
 import NoteCard from "../components/NoteCard";
+import { NoteService } from '../services/NoteService'
+import {LocalStorageService} from '../services/LocalStorageService'
 
 export default {
   name: "Home",
   data() {
     return {
-      notes: notes,
+      notes: [],
     };
   },
   components: {
     "note-card": NoteCard,
   },
+  mounted () {
+    this.fetchNotes()
+  },
   methods: {
     onDeleteNote(noteId) {
-      let index = notes.findIndex((note) => note.noteId == noteId);
-
-      notes.splice(index, 1);
-      // this.$router.push("/");
+      NoteService.removeItem(noteId)
+      this.fetchNotes()
     },
+    fetchNotes(){
+      this.notes = NoteService.fetchNotes()
+    },
+    clearAll(){
+      LocalStorageService.clearAllItems()
+    }
   },
 };
 </script>

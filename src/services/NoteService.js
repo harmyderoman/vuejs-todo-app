@@ -34,7 +34,7 @@ export const NoteService = {
    */
   getItemById (noteId) {
     const items = LocalStorageService.getItem(STORAGE_KEY, [])
-    const index = items.findIndex(i => i.id === noteId)
+    const index = items.findIndex(i => i.noteId === noteId)
     if (index === -1) return
     return items[index]
   },
