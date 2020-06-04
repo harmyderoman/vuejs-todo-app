@@ -8,7 +8,7 @@
     </ul>
     <div class="note--actions">
       <button @click="goToNote">Edit Note</button>
-      <button>Delete</button>
+      <button @click="$emit('delete-note', note.noteId)">Delete</button>
     </div>
   </div>
 </template>

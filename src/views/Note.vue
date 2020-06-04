@@ -21,7 +21,7 @@
     <div>
       <button @click="saveNote">Save</button>
       <button @click="cancelEdit">Cancel</button>
-      <button>Delete</button>
+      <button @click="deleteNote">Delete</button>
     </div>
   </div>
 </template>
@@ -65,12 +65,18 @@ export default {
       if(this.noteId){
         let index = notes.findIndex(note => note.noteId == this.noteId )
         notes[index] = this.note
-        console.log(notes[index])
       } else{
         notes.push(this.note)
       }
+      this.$router.push('/')
     },
     cancelEdit(){
+      this.$router.push('/')
+    },
+    deleteNote(){
+      let index = notes.findIndex(note => note.noteId == this.note.noteId )
+
+      notes.splice(index,1)
       this.$router.push('/')
     }
   },
