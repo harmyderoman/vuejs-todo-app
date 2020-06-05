@@ -20,8 +20,8 @@
     <hr />
     <div>
       <button @click="saveNote">Save</button>
-      <button @click="cancelEdit">Cancel</button>
-      <button @click="deleteNote">Delete</button>
+      <button @click="handleCancelEdit">Cancel</button>
+      <button @click="handleDeleteNote">Delete</button>
     </div>
   </div>
 </template>
@@ -29,7 +29,13 @@
 <script>
 import TodoItem from "../components/TodoItem";
 import { NoteService } from '../services/NoteService'
-import { random } from '../utils'
+import { random } from '../utils'  
+import Confirm from '../components/Confirm'
+// import MessageBox from '../components/MessageBox'
+import { create } from 'vue-modal-dialogs'
+
+const confirm = create(Confirm, 'title', 'content')
+// const messageBox = create(MessageBox, 'content')
 
 export default {
   name: "Note",
@@ -100,6 +106,21 @@ export default {
         this.histotyIndex += 1;
         this.note = this.noteHistory[this.histotyIndex];
       }
+    },
+    async handleDeleteNote(noteId){
+      if (await confirm('Do you realy want to delete this note?', 'This data will be lost forever')) {
+        this.deleteNote(noteId)
+        } else {
+          // messageBox(`Qwertyuio`)
+        }
+    },
+    async handleCancelEdit(noteId){
+      if (await confirm('Do you realy want to cancel editing ang exit to the main page?',
+       'All unsaved changes will be lost.')) {
+        this.cancelEdit(noteId)
+        } else {
+          // messageBox(`Qwertyuio`)
+        }
     },
   },
   watch: {

@@ -6,42 +6,48 @@
         v-for="note in notes"
         :note="note"
         :key="note.title"
-        @delete-note="onDeleteNote"
+        @delete-note="handleDeleteNote"
       />
     </div>
     <hr />
-    <button @click="clearAll">Clear Data</button>
   </div>
 </template>
 
 <script>
 import NoteCard from "../components/NoteCard";
-import { NoteService } from '../services/NoteService'
-import {LocalStorageService} from '../services/LocalStorageService'
+import { NoteService } from '../services/NoteService' 
+import Confirm from '../components/Confirm'
+import { create } from 'vue-modal-dialogs'
+
+const confirm = create(Confirm, 'title', 'content')
 
 export default {
   name: "Home",
   data() {
     return {
       notes: [],
+      content: "Hello!!!"
     };
   },
   components: {
     "note-card": NoteCard,
+    
   },
   mounted () {
     this.fetchNotes()
   },
   methods: {
-    onDeleteNote(noteId) {
+    deleteNote(noteId) {
       NoteService.removeItem(noteId)
       this.fetchNotes()
     },
     fetchNotes(){
       this.notes = NoteService.fetchNotes()
     },
-    clearAll(){
-      LocalStorageService.clearAllItems()
+    async handleDeleteNote(noteId){
+      if (await confirm('Do you realy want to delete this note?', 'This data will be lost forever')) {
+        this.deleteNote(noteId)
+        } 
     }
   },
 };

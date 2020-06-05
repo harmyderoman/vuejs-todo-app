@@ -6,6 +6,7 @@
     </nav>
     <hr/>
     <router-view/>
+    <dialogs-wrapper transition-name="fade"></dialogs-wrapper>
   </div>
 </template>
 
