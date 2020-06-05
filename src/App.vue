@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">List Of Notes</router-link>
-      <router-link to="/note">New Note</router-link>
+      <router-link class="router-link" to="/" exact>List Of Notes</router-link>
+      <router-link class="router-link" to="/note" exact>Create Note</router-link>
     </nav>
     <hr/>
     <router-view/>
@@ -10,15 +10,45 @@
   </div>
 </template>
 
-<style scoped>
+<script>
+export default {
+  name: "App"
+}
+</script>
+
+<style>
+body {
+  background-color: rgb(245, 245, 245);
+  font-family: cursive, sans-serif;
+  color: #a7a7a7;
+}
+*{
+  box-sizing: border-box;
+}
+#app{
+  box-shadow: 0px 0px 5px 5px rgba(117,117,117,0.75);
+  border-radius: 20px;
+  padding: 20px 30px;
+  width: 100%;
+  max-width: 700px;
+  margin: 10vh auto;
+}
 nav{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-a{
+.router-link{
   text-decoration: none;
-  color: black;
-  font-size: 26px;
+  color: rgb(80, 80, 80);
+  font-size: 22px;
+}
+.router-link-active{
+  color: green;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 </style>
