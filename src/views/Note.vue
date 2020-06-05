@@ -110,17 +110,13 @@ export default {
     async handleDeleteNote(noteId){
       if (await confirm('Do you realy want to delete this note?', 'This data will be lost forever')) {
         this.deleteNote(noteId)
-        } else {
-          // messageBox(`Qwertyuio`)
-        }
+        } 
     },
     async handleCancelEdit(noteId){
-      if (await confirm('Do you realy want to cancel editing ang exit to the main page?',
+      if (await confirm('Do you realy want to cancel editing and exit to the main page?',
        'All unsaved changes will be lost.')) {
         this.cancelEdit(noteId)
-        } else {
-          // messageBox(`Qwertyuio`)
-        }
+        } 
     },
   },
   watch: {

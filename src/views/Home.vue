@@ -25,8 +25,7 @@ export default {
   name: "Home",
   data() {
     return {
-      notes: [],
-      content: "Hello!!!"
+      notes: []
     };
   },
   components: {
