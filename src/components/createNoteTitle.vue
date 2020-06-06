@@ -8,7 +8,7 @@
         {{ note.title }} 
         </span>
       <button v-if="!editable" @click="editable = !editable">
-         Edit Title
+        <span class='material-icons orange'>edit</span>
       </button>
     </div>
     <input
@@ -74,5 +74,18 @@ input[type="text"]::placeholder {
 }
 .title-block{
   padding: 1px 0px;
+}
+button{
+  border: none;
+  border-radius: 100%;
+  background-color: #ffffff00;
+}
+button:focus {
+  outline: none;
+  
+}
+button:hover{
+  background-color: #ffffff7e;
+
 }
 </style>

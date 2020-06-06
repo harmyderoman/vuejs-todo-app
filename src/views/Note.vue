@@ -6,8 +6,16 @@
     <note-title :note="note"/>
     <hr />
     <div>
-      <button @click="undo" :disabled="!(this.histotyIndex > 0)">Undo</button>
-      <button @click="redo" :disabled="!(this.histotyIndex < (this.noteHistory.length - 1))">Redo</button>
+      <icon-button 
+        @action="undo" 
+        type="undo"
+        :disabled="!(this.histotyIndex > 0)"
+        />
+      <icon-button 
+        @action="redo" 
+        type="redo"
+        :disabled="!(this.histotyIndex < (this.noteHistory.length - 1))"
+      />
     </div>
     <ul>
       <todo-item
@@ -17,12 +25,17 @@
         @remove-todo="onRemoveTodo"
       />
     </ul>
-    <button @click="addTodo">Add Todo</button>
+    <!-- <button @click="addTodo">Add Todo</button> -->
+    <!-- <icon-button color="orange" type="add" @action="addTodo"></icon-button> -->
+    <div class="new-todo">
+      <icon-button color="orange" type="add" @action="addTodo"></icon-button>
+      <span>Add New Todo</span>
+    </div>
     <hr />
     <div>
-      <button @click="saveNote">Save</button>
-      <button @click="handleCancelEdit">Cancel</button>
-      <button @click="handleDeleteNote">Delete</button>
+      <icon-button color="green" type="save" @action="saveNote"></icon-button>
+      <icon-button color="orange" type="cancel" @action="handleCancelEdit"></icon-button>
+      <icon-button color="red" type="delete" @action="handleDeleteNote"></icon-button>
     </div>
   </div>
 </template>
@@ -34,6 +47,7 @@ import { random } from '../utils'
 import Confirm from '../components/Confirm'
 import { create } from 'vue-modal-dialogs'
 import NoteTitle from '../components/createNoteTitle'
+import IconButton from '../components/IconButton'
 
 const confirm = create(Confirm, 'title', 'content')
 
@@ -41,7 +55,8 @@ export default {
   name: "Note",
   components: {
     "todo-item": TodoItem,
-    "note-title": NoteTitle
+    "note-title": NoteTitle,
+    "icon-button": IconButton
   },
   data() {
     return {
@@ -140,5 +155,15 @@ export default {
 </script>
 
 <style>
-
+.new-todo{
+  display: flex;
+  justify-content: start;
+  background-color: #cecece;
+  height: 36px;
+  margin: 5px 0px;
+  padding-top: 4px;
+  padding-left: 10px;
+  padding-right: 15px;
+  border-radius: 5px;
+}
 </style>

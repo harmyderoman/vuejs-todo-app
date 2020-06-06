@@ -20,13 +20,14 @@ export default {
 body {
   background-color: rgb(192, 192, 192);
   font-family: cursive, sans-serif;
-  color: #a7a7a7;
+  color: #8a8a8a;
 }
 *{
   box-sizing: border-box;
 }
 ul{
   padding-inline-start: 0px;
+  list-style-type: none;
 }
 #app{
   box-shadow: 0px 0px 5px 5px rgba(117,117,117,0.75);
@@ -56,4 +57,24 @@ hr {
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
+
+.green{
+  color: green
+}
+.red{
+  color: red;
+}
+.orange{
+  color: orange;
+}
+.grey{
+  color: grey;
+}
+.black{
+  color: black;
+}
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
 </style>

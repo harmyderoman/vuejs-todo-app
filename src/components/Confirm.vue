@@ -1,17 +1,31 @@
 <template>
   <div class="modal-backdrop" @click="$close(false)">
     <div class="modal-dialog">
+      <span class="material-icons red md-48">
+        report
+      </span>
       <header class="modal-title">{{ title }}</header>
       <div class="modal-body">
         <p>{{ content }}</p>
       </div>
       <footer class="modal-actions">
-        <button type="text" @click="$close(true)">Yes</button>
-        <button type="text" @click="$close(false)">No</button>
+        <icon-button type="check_circle" color="orange" @action="$close(true)"></icon-button>
+        <icon-button type="cancel" color="red" @action="$close(false)"></icon-button>
       </footer>
     </div>
   </div>
 </template>
+
+<script>
+import IconButton from '../components/IconButton'
+
+export default {
+  name: "Confirm",
+  components: {
+    "icon-button": IconButton
+  },
+}
+</script>
 
 <style>
 .modal-backdrop {
@@ -24,7 +38,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  text-align: center;
 }
 .modal-dialog {
   width: 30rem;
@@ -35,16 +50,17 @@
   transition: 0.5s;
 }
 .modal-title {
+  /* text-align: center; */
   font-weight: bold;
   font-size: 1.3rem;
   margin-bottom: 1rem;
   /* color: rgb(100, 100, 100); */
-  color: red;
+  /* color: red; */
 }
-.modal-body {
-    color: red;
+/* .modal-body { */
+    /* color: red; */
   /* color: rgb(180, 180, 180); */
-}
+/* } */
 .modal-actions{
     display: flex;
     flex-direction: row;

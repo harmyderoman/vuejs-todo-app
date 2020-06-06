@@ -9,7 +9,6 @@
         @delete-note="handleDeleteNote"
       />
     </div>
-    <hr />
   </div>
 </template>
 
