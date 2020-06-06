@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!-- <h1>List Of Notes:</h1> -->
     <div v-if="!notes.length">
       <h3>There is no notes available. To create new one click here</h3>
       <icon-button color="orange" type="add" @action="$router.push('/note')"></icon-button>

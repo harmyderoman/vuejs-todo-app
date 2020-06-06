@@ -50,17 +50,10 @@ export default {
   transition: 0.5s;
 }
 .modal-title {
-  /* text-align: center; */
   font-weight: bold;
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  /* color: rgb(100, 100, 100); */
-  /* color: red; */
 }
-/* .modal-body { */
-    /* color: red; */
-  /* color: rgb(180, 180, 180); */
-/* } */
 .modal-actions{
     display: flex;
     flex-direction: row;

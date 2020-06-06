@@ -62,7 +62,6 @@ span{
 li {
   display: flex;
   flex-wrap: nowrap;
-  /* justify-content: space-between; */
   background-color: #e2e2e2;
   height: 36px;
   margin: 5px 0px;
@@ -84,15 +83,11 @@ input[type="text"] {
   max-width: 180px;
   height: 25px;
   padding: 4px 10px;
-  /* outline: none; */
   border: none;
   border-radius: 5px;
   font-family: cursive, sans-serif;
   color: #8a8a8a;
 }
-/* input:focus {
-  outline: #a3ccad auto 1px;
-} */
 div{
   display: flex;
   justify-content: flex-start;

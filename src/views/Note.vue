@@ -1,8 +1,5 @@
 <template>
   <div class="note-page">
-    <!-- <h1>Note Page {{ $route.params.noteId }}</h1> -->
-    <!-- <h2>{{ note.title }}</h2>
-    <input v-model="note.title" type="text" placeholder="Enter new title..." /> -->
     <note-title :note="note"/>
     <hr />
     <div>
@@ -25,8 +22,6 @@
         @remove-todo="onRemoveTodo"
       />
     </ul>
-    <!-- <button @click="addTodo">Add Todo</button> -->
-    <!-- <icon-button color="orange" type="add" @action="addTodo"></icon-button> -->
     <div class="new-todo">
       <icon-button color="orange" type="add" @action="addTodo"></icon-button>
       <span @click="addTodo">Add New Todo</span>
