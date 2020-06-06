@@ -32,6 +32,7 @@
       <icon-button color="orange" type="cancel" @action="handleCancelEdit"></icon-button>
       <icon-button color="red" type="delete" @action="handleDeleteNote"></icon-button>
     </div>
+    <hr />
   </div>
 </template>
 
@@ -146,6 +147,15 @@ export default {
       deep: true,
     },
   },
+  async beforeRouteLeave (to, from, next) {
+    if (await confirm('Do you realy want to leave this page?',
+       'All unsaved changes will be lost.')) {
+        this.clearNote()
+        next()
+      } else{
+        next(from)
+      }
+  }
 };
 </script>
 
