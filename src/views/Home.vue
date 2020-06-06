@@ -1,6 +1,10 @@
 <template>
   <div class="home">
     <!-- <h1>List Of Notes:</h1> -->
+    <div v-if="!notes.length">
+      <h3>There is no notes available. To create new one click here</h3>
+      <icon-button color="orange" type="add" @action="$router.push('/note')"></icon-button>
+    </div>
     <div>
       <note-card
         v-for="note in notes"
@@ -17,6 +21,7 @@ import NoteCard from "../components/NoteCard";
 import { NoteService } from '../services/NoteService' 
 import Confirm from '../components/Confirm'
 import { create } from 'vue-modal-dialogs'
+import IconButton from '../components/IconButton'
 
 const confirm = create(Confirm, 'title', 'content')
 
@@ -29,6 +34,7 @@ export default {
   },
   components: {
     "note-card": NoteCard,
+    "icon-button": IconButton
     
   },
   mounted () {
@@ -50,3 +56,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+div{
+  text-align: center;
+}
+</style>

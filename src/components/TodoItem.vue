@@ -5,7 +5,7 @@
     </div>
     <div>
       <span
-        :class="{ completed: todo.completed }"
+        :class="{ completed: (todo.completed&&todo.text) }"
         v-if="!editable"
         @click="editable = !editable"
       >
@@ -18,7 +18,6 @@
         v-on:keyup.enter="editable = !editable"
       />
     </div>
-    <slot></slot>
 
     <div class="todo-actions">
       <icon-button
@@ -57,13 +56,17 @@ export default {
 </script>
 
 <style scoped>
+span{
+  word-wrap: none;
+}
 li {
   display: flex;
-  justify-content: space-between;
-  background-color: #cecece;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
+  background-color: #e2e2e2;
   height: 36px;
   margin: 5px 0px;
-  padding-top: 6px;
+  padding-top: 5px;
   padding-left: 10px;
   padding-right: 15px;
   border-radius: 5px;
@@ -74,20 +77,34 @@ li {
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
+  margin-right: 20px;
 }
 input[type="text"] {
   width: auto;
-  max-width: 150px;
+  max-width: 180px;
   height: 25px;
   padding: 4px 10px;
-  outline: none;
+  /* outline: none; */
   border: none;
   border-radius: 5px;
-  /* font-size: ; */
   font-family: cursive, sans-serif;
   color: #8a8a8a;
 }
-input:focus {
+/* input:focus {
   outline: #a3ccad auto 1px;
+} */
+div{
+  display: flex;
+  justify-content: flex-start;
+}
+.todo-actions{
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+@media screen and (max-width: 375px) {
+  input[type="text"]{
+    max-width: 150px;
+  }
 }
 </style>

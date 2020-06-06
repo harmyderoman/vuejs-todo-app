@@ -56,6 +56,7 @@ input[type="text"] {
   border: none;
   border-radius: 5px;
   margin: 0 auto;
+  padding-left: 15px;
 }
 input[type="text"]::placeholder {
   font-weight: normal;

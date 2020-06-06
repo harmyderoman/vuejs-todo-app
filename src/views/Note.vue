@@ -29,7 +29,7 @@
     <!-- <icon-button color="orange" type="add" @action="addTodo"></icon-button> -->
     <div class="new-todo">
       <icon-button color="orange" type="add" @action="addTodo"></icon-button>
-      <span>Add New Todo</span>
+      <span @click="addTodo">Add New Todo</span>
     </div>
     <hr />
     <div>
@@ -157,8 +157,8 @@ export default {
 <style>
 .new-todo{
   display: flex;
-  justify-content: start;
-  background-color: #cecece;
+  justify-content: flex-start;
+  background-color: #e2e2e2;
   height: 36px;
   margin: 5px 0px;
   padding-top: 4px;

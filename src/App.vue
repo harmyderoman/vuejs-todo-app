@@ -7,6 +7,7 @@
     <hr/>
     <router-view/>
     <dialogs-wrapper transition-name="fade"></dialogs-wrapper>
+    <p>Made by Roman Harmyder. Link to the <a href="https://github.com/harmyderoman/vuejs-todo-app">source</a>. </p>
   </div>
 </template>
 
@@ -77,4 +78,9 @@ hr {
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+@media screen and (max-width: 375px) {
+  #app{
+    padding: 15px 15px;
+  }
+}
 </style>
