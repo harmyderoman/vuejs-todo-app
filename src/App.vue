@@ -18,7 +18,7 @@ export default {
 
 <style>
 body {
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(192, 192, 192);
   font-family: cursive, sans-serif;
   color: #a7a7a7;
 }
@@ -27,6 +27,7 @@ body {
 }
 #app{
   box-shadow: 0px 0px 5px 5px rgba(117,117,117,0.75);
+  background-color: rgb(247, 247, 247);
   border-radius: 20px;
   padding: 20px 30px;
   width: 100%;
@@ -45,6 +46,7 @@ nav{
 }
 .router-link-active{
   color: green;
+  text-shadow: 0 0 7px rgba(0, 143, 36, 0.5);
 }
 hr {
     border: 0;

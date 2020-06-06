@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>List Of Notes:</h1>
+    <!-- <h1>List Of Notes:</h1> -->
     <div>
       <note-card
         v-for="note in notes"

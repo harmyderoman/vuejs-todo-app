@@ -1,8 +1,9 @@
 <template>
   <div class="note-page">
-    <h1>Note Page {{ $route.params.noteId }}</h1>
-    <h2>{{ note.title }}</h2>
-    <input v-model="note.title" type="text" placeholder="Enter new title..." />
+    <!-- <h1>Note Page {{ $route.params.noteId }}</h1> -->
+    <!-- <h2>{{ note.title }}</h2>
+    <input v-model="note.title" type="text" placeholder="Enter new title..." /> -->
+    <note-title :title="note.title"/>
     <hr />
     <div>
       <button @click="undo" :disabled="!(this.histotyIndex > 0)">Undo</button>
@@ -31,34 +32,37 @@ import TodoItem from "../components/TodoItem";
 import { NoteService } from '../services/NoteService'
 import { random } from '../utils'  
 import Confirm from '../components/Confirm'
-// import MessageBox from '../components/MessageBox'
 import { create } from 'vue-modal-dialogs'
+import NoteTitle from '../components/createNoteTitle'
 
 const confirm = create(Confirm, 'title', 'content')
-// const messageBox = create(MessageBox, 'content')
 
 export default {
   name: "Note",
   components: {
     "todo-item": TodoItem,
+    "note-title": NoteTitle
   },
   data() {
     return {
       noteHistory: [],
       histotyIndex: 0,
       watching: true,
-      noteId: this.$route.params.noteId,
-      note: {
-        noteId: "",
-        title: "",
-        todos: [],
-      },
+      noteId: '',
+      note: {},
     };
   },
   mounted() {
+    this.noteId = this.$route.params.noteId
     if (this.noteId) {
       this.note = NoteService.getItemById(this.noteId)
     } else {
+      
+      this.note = {
+        noteId: "",
+        title: "",
+        todos: [],
+      }
       this.note.noteId = random()
     }
   },
