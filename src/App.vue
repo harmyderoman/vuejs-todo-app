@@ -25,6 +25,9 @@ body {
 *{
   box-sizing: border-box;
 }
+ul{
+  padding-inline-start: 0px;
+}
 #app{
   box-shadow: 0px 0px 5px 5px rgba(117,117,117,0.75);
   background-color: rgb(247, 247, 247);
