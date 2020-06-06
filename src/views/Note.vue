@@ -3,7 +3,7 @@
     <!-- <h1>Note Page {{ $route.params.noteId }}</h1> -->
     <!-- <h2>{{ note.title }}</h2>
     <input v-model="note.title" type="text" placeholder="Enter new title..." /> -->
-    <note-title :title="note.title"/>
+    <note-title :note="note"/>
     <hr />
     <div>
       <button @click="undo" :disabled="!(this.histotyIndex > 0)">Undo</button>
@@ -69,7 +69,7 @@ export default {
   methods: {
     addTodo() {
       this.note.todos.push({
-        text: "New Todo",
+        text: "",
         completed: false,
       });
     },

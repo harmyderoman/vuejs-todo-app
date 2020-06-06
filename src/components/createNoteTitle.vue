@@ -3,9 +3,9 @@
     <span>Note title:</span>
 
     <br />
-    <div v-if="!editable">
+    <div class="title-block" v-if="!editable">
       <span @click="editable = !editable" class="note-title">
-        {{ title }} 
+        {{ note.title }} 
         </span>
       <button v-if="!editable" @click="editable = !editable">
          Edit Title
@@ -14,7 +14,7 @@
     <input
       v-else
       type="text"
-      v-model="title"
+      v-model="note.title"
       v-on:keyup.enter="editable = !editable"
       placeholder="Enter title"
     />
@@ -25,7 +25,7 @@
 export default {
   name: "NoteTitle",
   props: {
-    title: String,
+    note: Object,
   },
   data() {
     return {
@@ -45,7 +45,6 @@ h2 {
 }
 input[type="text"] {
   width: 180px;
-  display: block;
   font-size: 1.5em;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;
@@ -56,7 +55,6 @@ input[type="text"] {
   color: #a7a7a7;
   border: none;
   border-radius: 5px;
-  /* padding-left: 10px; */
   margin: 0 auto;
 }
 input[type="text"]::placeholder {
@@ -64,16 +62,17 @@ input[type="text"]::placeholder {
   font-family: cursive, sans-serif;
   color: #d1d1d1;
   font-size: 1em;
-  /* padding-left: 10px; */
 }
 .note-title{
-    font-weight: bold;
+  font-weight: bold;
   font-family: cursive, sans-serif;
   color: #a7a7a7;
   border: none;
   border-radius: 5px;
-  /* padding-left: 10px; */
   margin: 0 auto;
   font-size: 1.5em;
+}
+.title-block{
+  padding: 1px 0px;
 }
 </style>
