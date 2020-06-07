@@ -22,6 +22,10 @@
 </template>
 
 <script>
+
+/**
+ * @module NoteTitle editing and saving note title
+ */
 export default {
   name: "NoteTitle",
   props: {

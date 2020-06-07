@@ -17,7 +17,11 @@
 <script>
 import IconButton from '../components/IconButton'
 
+/**
+ * @module NoteCard showing note in list on main page
+ */
 export default {
+  name: "NoteCard",
   props: {
     note: Object
   },

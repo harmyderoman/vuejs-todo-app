@@ -38,6 +38,9 @@
 <script>
 import IconButton from "../components/IconButton";
 
+/**
+ * @module TodoItem editing and saving Todo item
+ */
 export default {
   name: "TodoItem",
   components: {
@@ -51,7 +54,6 @@ export default {
       editable: false,
     };
   },
-  mounted() {},
 };
 </script>
 

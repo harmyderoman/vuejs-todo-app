@@ -42,11 +42,17 @@ import { NoteService } from '../services/NoteService'
 import { random } from '../utils'  
 import Confirm from '../components/Confirm'
 import { create } from 'vue-modal-dialogs'
-import NoteTitle from '../components/createNoteTitle'
+import NoteTitle from '../components/NoteTitle'
 import IconButton from '../components/IconButton'
 
+/**
+ * @function confirm calling a modal window to accept action
+ */
 const confirm = create(Confirm, 'title', 'content')
 
+/**
+ * @module Note note page and create new note page
+ */
 export default {
   name: "Note",
   components: {
@@ -78,29 +84,47 @@ export default {
     }
   },
   methods: {
+  /**
+   * addes new Todo
+   */
     addTodo() {
       this.note.todos.push({
         text: "",
         completed: false,
       });
     },
+    /**
+   * handling removing Todo
+   */
     onRemoveTodo(todo) {
       let i = this.note.todos.indexOf(todo);
       this.note.todos.splice(i, 1);
     },
+    /**
+     * saving Note
+     */
     saveNote() {
       NoteService.updateItem(this.note.noteId, this.note)
     },
+    /**
+     * cancel editing Note and rerouting to the main page
+     */
     cancelEdit() {
       this.clearNote()
       this.$router.push("/");
     },
+    /**
+     * deleting Note and rerouting to the main page
+     */
     deleteNote() {
       NoteService.removeItem(this.noteId)
       this.clearNote()
       this.$router.push("/");
 
     },
+    /**
+     * clear this.note 
+     */
     clearNote(){
       this.note = {
         noteId: "",
@@ -108,6 +132,9 @@ export default {
         todos: [],
       }
     },
+    /**
+     * undoing changes
+     */
     undo() {
       this.watching = false;
       if (this.histotyIndex > 0) {
@@ -115,6 +142,9 @@ export default {
         this.note = this.noteHistory[this.histotyIndex];
       }
     },
+     /**
+     * redoing changes
+     */
     redo() {
       this.watching = false;
       if (this.histotyIndex < (this.noteHistory.length - 1)) {
@@ -122,11 +152,17 @@ export default {
         this.note = this.noteHistory[this.histotyIndex];
       }
     },
+     /**
+     * handle deleting Note with confirm dialog
+     */
     async handleDeleteNote(noteId){
       if (await confirm('Do you realy want to delete this note?', 'This data will be lost forever')) {
         this.deleteNote(noteId)
         } 
     },
+      /**
+     * handle canceling edit Note with confirm dialog
+     */
     async handleCancelEdit(noteId){
       if (await confirm('Do you realy want to cancel editing and exit to the main page?',
        'All unsaved changes will be lost.')) {
@@ -135,6 +171,9 @@ export default {
     },
   },
   watch: {
+      /**
+     *  saving history of note changings besides undoing and redoing
+     */
     note: {
       handler: function(val) {
         if (this.watching) {
@@ -147,6 +186,9 @@ export default {
       deep: true,
     },
   },
+    /**
+     *  safe rerouting from the page
+     */
   async beforeRouteLeave (to, from, next) {
     if (await confirm('Do you realy want to leave this page?',
        'All unsaved changes will be lost.')) {

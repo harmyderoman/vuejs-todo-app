@@ -19,6 +19,9 @@
 <script>
 import IconButton from '../components/IconButton'
 
+/**
+ * @module Confirm for modal dialog to confirm actions
+ */
 export default {
   name: "Confirm",
   components: {

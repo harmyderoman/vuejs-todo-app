@@ -8,8 +8,13 @@
     <slot></slot>
   </button>
 </template>
+
 <script>
+/**
+ * @module IconButton icon button 
+ */
 export default {
+  name: "IconButton",
   props: {
     type: String,
     color: String
