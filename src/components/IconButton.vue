@@ -1,8 +1,9 @@
 <template>
   <button
     :style="{ color: color }"
-   @click="$emit('action')">
-    <span class="material-icons md-36">
+   @click="$emit('action')"
+   :aria-label="label">
+    <span class="material-icons md-36" aria-hidden="true">
       {{ type }}
     </span>
     <slot></slot>
@@ -17,7 +18,8 @@ export default {
   name: "IconButton",
   props: {
     type: String,
-    color: String
+    color: String,
+    label: String
   }
 }
 </script>

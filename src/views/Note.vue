@@ -7,11 +7,13 @@
         @action="undo" 
         type="undo"
         :disabled="!(this.histotyIndex > 0)"
+        label="Undo"
         />
       <icon-button 
         @action="redo" 
         type="redo"
         :disabled="!(this.histotyIndex < (this.noteHistory.length - 1))"
+        label="Redo"
       />
     </div>
     <ul>
@@ -23,14 +25,31 @@
       />
     </ul>
     <div class="new-todo">
-      <icon-button color="orange" type="add" @action="addTodo"></icon-button>
+      <icon-button 
+        color="orange" 
+        type="add" 
+        @action="addTodo"
+        label="Add"
+        ></icon-button>
       <span @click="addTodo">Add New Todo</span>
     </div>
     <hr />
     <div>
-      <icon-button color="green" type="save" @action="saveNote"></icon-button>
-      <icon-button color="orange" type="cancel" @action="handleCancelEdit"></icon-button>
-      <icon-button color="red" type="delete" @action="handleDeleteNote"></icon-button>
+      <icon-button 
+        color="green" 
+        type="save" 
+        @action="saveNote"
+        label="Save"></icon-button>
+      <icon-button 
+        color="orange" 
+        type="cancel" 
+        @action="handleCancelEdit"
+        label="Cancel"></icon-button>
+      <icon-button 
+        color="red" 
+        type="delete" 
+        @action="handleDeleteNote"
+        label="Delete"></icon-button>
     </div>
     <hr />
   </div>

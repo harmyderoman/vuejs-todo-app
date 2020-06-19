@@ -9,8 +9,18 @@
         <p>{{ content }}</p>
       </div>
       <footer class="modal-actions">
-        <icon-button type="check_circle" color="orange" @action="$close(true)"></icon-button>
-        <icon-button type="cancel" color="red" @action="$close(false)"></icon-button>
+        <icon-button 
+          type="check_circle" 
+          color="orange" 
+          @action="$close(true)"
+          label="Confirm">
+        </icon-button>
+        <icon-button 
+          type="cancel" 
+          color="red" 
+          @action="$close(false)"
+          label="Cancel">
+        </icon-button>
       </footer>
     </div>
   </div>

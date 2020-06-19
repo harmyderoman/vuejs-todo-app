@@ -24,12 +24,14 @@
         @action="editable = !editable"
         :type="editable ? 'save_alt' : 'edit'"
         :color="editable ? 'green' : 'orange'"
+        :label="editable ? 'Save' : 'Edit'"
       >
       </icon-button>
       <icon-button
         color="red"
         type="delete_forever"
         @action="$emit('remove-todo', todo)"
+        label="Delete"
       ></icon-button>
     </div>
   </li>

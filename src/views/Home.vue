@@ -2,7 +2,12 @@
   <div class="home">
     <div v-if="!notes.length">
       <h3>There is no notes available. To create new one click down here</h3>
-      <icon-button color="orange" type="add" @action="$router.push('/note')"></icon-button>
+      <icon-button 
+        color="orange" 
+        type="add" 
+        @action="$router.push('/note')"
+        label="Add"
+        ></icon-button>
       <hr />
     </div>
     <div>

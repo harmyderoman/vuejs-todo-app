@@ -7,9 +7,16 @@
       <span @click="editable = !editable" class="note-title">
         {{ note.title }} 
         </span>
-      <button v-if="!editable" @click="editable = !editable">
-        <span class='material-icons orange'>edit</span>
-      </button>
+      <!-- <button v-if="!editable" @click="editable = !editable" aria-label="Edit">
+        <span class='material-icons orange' aria-hidden="true">edit</span>
+      </button> -->
+      <icon-button
+        color="orange"
+        type="edit"
+        label="Edit"
+        @action="editable = !editable"
+        >
+      </icon-button>
     </div>
     <input
       v-else
@@ -22,12 +29,16 @@
 </template>
 
 <script>
+import IconButton from '../components/IconButton'
 
 /**
  * @module NoteTitle editing and saving note title
  */
 export default {
   name: "NoteTitle",
+  components: {
+    "icon-button": IconButton,
+  },
   props: {
     note: Object,
   },
