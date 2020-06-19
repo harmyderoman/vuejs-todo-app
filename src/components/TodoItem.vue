@@ -16,6 +16,7 @@
         type="text"
         v-model="todo.text"
         v-on:keyup.enter="editable = !editable"
+        v-click-outside="setEditFalse"
       />
     </div>
 
@@ -56,6 +57,11 @@ export default {
       editable: false,
     };
   },
+  methods: {
+    setEditFalse(){
+      this.editable = false
+    }
+  }
 };
 </script>
 

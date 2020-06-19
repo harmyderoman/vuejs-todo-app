@@ -22,8 +22,9 @@
       v-else
       type="text"
       v-model="note.title"
-      v-on:keyup.enter="editable = !editable"
+      @keyup.enter="editable = !editable"
       placeholder="Enter title"
+      v-click-outside="setEditFalse"
     />
   </div>
 </template>
@@ -47,6 +48,11 @@ export default {
       editable: true,
     };
   },
+  methods: {
+    setEditFalse(){
+      this.editable = false
+    }
+  }
 };
 </script>
 
