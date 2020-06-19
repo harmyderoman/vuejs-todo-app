@@ -2,7 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import * as ModalDialogs from 'vue-modal-dialogs'
-Vue.use(ModalDialogs)               // No options
+import vClickOutside from 'v-click-outside'
+
+Vue.use(vClickOutside)
+Vue.use(ModalDialogs)              
 
 Vue.config.productionTip = false
 
