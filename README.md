@@ -1,76 +1,87 @@
 # vuejs-todo-app
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-# Техническое задание
-Средствами Vue.js реализуйте небольшое SPA приложение для заметок.
+# Technical task
 
-Каждая заметка имеет название и список задач (todo list), далее - Todo.
-Каждый пункт Todo состоит из чекбокса и относящейся к нему текстовой подписи.
+Use Vue.js to implement a small SPA note-taking application.
 
-Приложение состоит всего из 2х страниц.
+Each note has a title and a todo list of Todo items. Each Todo item consists of a checkbox and associated text of todo task.
 
-На главной странице отображается список всех заметок.
-Для каждой заметки отображается заголовок и Todo, сокращенный до нескольких пунктов, без возможности отмечать.
-Действия на главной:
-- перейти к созданию новой заметки
-- перейти к изменению
-- удалить (необходимо подтверждение)
+The application consists of only 2 pages.
 
-Страница изменения заметки позволяет определенную заметку отредактировать, отметить пункты Todo, а после сохранить изменения.
-Действия с заметкой:
-- сохранить изменения
-- отменить редактирование (необходимо подтверждение)
-- удалить (необходимо подтверждение)
-- отменить внесенное изменение
-- повторить отмененное изменение
-Действия с пунктами Todo:
-- добавить
-- удалить
-- отредактировать текст
-- отметить как выполненный
+The main page displays a list of all notes. For each note, a title and todos are displayed, without the ability to edit them.
 
-Требования к функционалу:
-- Все действия на сайте должны происходить без перезагрузки страницы.
-- Подтверждение действий (удалить заметку) выполняется с помощью диалогового окна.
-- Интерфейс должен отвечать требованиям usability.
-- После перезагрузки страницы состояние списка заметок должно сохраняться.
-- Можно пренебречь несоответствием редактирования текста с помощью кнопок отменить/повторить и аналогичным действиям с помощью комбинацияй клавиш (Ctrl+Z, Command+Z, etc.).
+## Actions on the main page:
 
-Технические требования:
-- Диалоговые окна должны быть реализованы без использования "alert", "prompt" и "confirm".
-- В качестве языка разработки допускается использовать JavaScript или TypeScript.
-- В качестве сборщика, если это необходимо, используйте Webpack.
-- Верстка должна быть выполнена без использования UI библиотек (например Vuetify).
-- Адаптивность не обязательна, но приветствуется.
-- Логика приложения должна быть разбита на разумное количество самодостаточных Vue-компонентов.
+- go to create a new note
+- go to edit existed note
+- delete note (confirmation required)
+  The note edit page allows you to edit a specific note, mark Todo items, and then save the changes. Actions with a note:
 
-Особое внимание стоит обратить на следующие моменты:
-- Код должен быть написан понятно и аккуратно, с соблюдением табуляции и прочих элементов написания, без лишних элементов и функций, не имеющих отношения к функционалу тестового задания, снабжен понятными комментариями.
-- Читабельность и наличие элементарной архитектуры.
-- Чистота и оформление кода — не менее важный фактор. Код должен быть написан в едином стиле (желательно в рекомендуемом для конкретного языка). Также к чистоте относятся отсутствие копипаста и дублирования логики.
+- save changes
+- undo editing (confirmation required)
+- delete (confirmation required)
+- undo the change made
+- redo undo
 
-Тестовое задание должно быть предоставлено в следующем виде:
-- Ссылка на публичный репозиторий (GitHub, BitBucket, GitLab) с исходным кодом.
-- Ссылка на сайт для тестирования функционала. Или Dockerfile и docker-compose.yaml, позволяющие развернуть локально командой docker-compose up работоспособную копию сайта.
+## Actions with Todo items:
+
+- to add
+- delete
+- edit text
+- mark as done
+
+## Functional requirements:
+
+- All actions on the site should take place without reloading the page.
+- Confirmation of actions (delete a note) is performed using a dialog box.
+- The interface must meet the usability requirements.
+- After reloading the page, the state of the note list should be preserved.
+- You can neglect text editing inconsistencies with undo/redo buttons and similar actions with keyboard shortcuts (Ctrl + Z, Command + Z, etc.).
+
+## Technical requirements:
+
+- Dialog boxes should be implemented without using "alert", "prompt" and "confirm".
+- JavaScript or TypeScript can be used as the development language.
+- Use Webpack as a bundler if needed.
+- Layout should be done without using UI libraries (for example Vuetify).
+  Responsiveness is optional, but encouraged.
+- The application logic should be broken down into a reasonable number of self-contained Vue components.
+
+## Particular attention should be paid to the following points:
+
+- The code should be written clearly and accurately, with the observance of tabulation and other writing elements, without unnecessary elements and functions that are not related to the functionality of the test task, provided with understandable comments.
+- Readability and basic architecture.
+- Cleanliness and cleanliness of the code is an equally important factor. The code should be written in a uniform style (preferably in the one recommended for a particular language). Also, cleanliness includes the absence of copy-paste and duplication of logic.
+
+The test task should be provided in the following form:
+
+- Link to public repository (GitHub, BitBucket, GitLab) with source code.
+- Link to the site for testing the functionality. Or Dockerfile and docker-compose.yaml, which allow you to deploy locally using docker-compose up a working copy of your site.
