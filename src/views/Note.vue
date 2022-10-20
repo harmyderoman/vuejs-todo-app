@@ -6,13 +6,13 @@
       <icon-button 
         @action="undo" 
         type="undo"
-        :disabled="!(this.histotyIndex > 0)"
+        :disabled="!canUndo"
         label="Undo"
         />
       <icon-button 
         @action="redo" 
         type="redo"
-        :disabled="!(this.histotyIndex < (this.noteHistory.length - 1))"
+        :disabled="!canRedo"
         label="Redo"
       />
     </div>
@@ -102,6 +102,14 @@ export default {
       this.note.noteId = random()
     }
   },
+  computed: {
+    canUndo(){
+      return (this.histotyIndex > 0)
+    },
+    canRedo(){
+      return (this.histotyIndex < (this.noteHistory.length - 1))
+    }
+  },
   methods: {
   /**
    * addes new Todo
@@ -156,7 +164,7 @@ export default {
      */
     undo() {
       this.watching = false;
-      if (this.histotyIndex > 0) {
+      if (this.canUndo) {
         this.histotyIndex -= 1;
         this.note = this.noteHistory[this.histotyIndex];
       }
@@ -166,7 +174,7 @@ export default {
      */
     redo() {
       this.watching = false;
-      if (this.histotyIndex < (this.noteHistory.length - 1)) {
+      if (this.canRedo) {
         this.histotyIndex += 1;
         this.note = this.noteHistory[this.histotyIndex];
       }
@@ -196,7 +204,7 @@ export default {
     note: {
       handler: function(val) {
         if (this.watching) {
-          this.noteHistory.push(JSON.parse(JSON.stringify(val)));
+          this.noteHistory.push(window.structuredClone(val));
           this.histotyIndex = this.noteHistory.length - 1;
         } else {
           this.watching = true;
